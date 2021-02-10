@@ -10,7 +10,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors import (
     SessionPasswordNeeded, FloodWait,
     PhoneNumberInvalid, ApiIdInvalid,
-    PhoneCodeInvalid, PhoneCodeExpired
+    PhoneCodeInvalid, PhoneCodeExpired, UserNotParticipant
 )
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
 from creds import Credentials
@@ -35,29 +35,29 @@ UPDATES_CHANNEL = os.environ.get('UPDATES_CHANNEL', 'Mr_Bot_Developer')
 
 @bot.on_message(filters.private & filters.command("start"))
 async def genStr(_, msg: Message):
-    if message.chat.id in Credentials.BANNED_USERS:
-        await client.send_message(
-            chat_id=message.chat.id,
+    if msg.chat.id in Credentials.BANNED_USERS:
+        await bot.send_message(
+            chat_id=msg.chat.id,
             text="You are Banned 🚫 to use me 🤭. Contact My [Support Group](https://t.me/Mr_Developer_Support)",
-            reply_to_message_id=message.message_id
+            reply_to_message_id=msg.message_id
         )
         return
     ## Doing Force Sub 🤣
     update_channel = UPDATES_CHANNEL
     if update_channel:
         try:
-            user = await client.get_chat_member(update_channel, message.chat.id)
+            user = await bot.get_chat_member(update_channel, msg.chat.id)
             if user.status == "kicked":
-               await client.send_message(
-                   chat_id=message.chat.id,
+               await bot.send_message(
+                   chat_id=msg.chat.id,
                    text="Sorry Sir, You are Banned!\nNow Your Can't Use Me. Contact my [Support Group](https://t.me/Mr_Developer_Support).",
                    parse_mode="markdown",
                    disable_web_page_preview=True
                )
                return
         except UserNotParticipant:
-            await client.send_message(
-                chat_id=message.chat.id,
+            await bot.send_message(
+                chat_id=msg.chat.id,
                 text="**Please Join My Updates Channel to use me! 😎**",
                 reply_markup=InlineKeyboardMarkup(
                     [
@@ -70,8 +70,8 @@ async def genStr(_, msg: Message):
             )
             return
         except Exception:
-            await client.send_message(
-                chat_id=message.chat.id,
+            await bot.send_message(
+                chat_id=msg.chat.id,
                 text="**Something went Wrong 🤪. Contact my [Support Group](https://t.me/Mr_Developer_Support).**",
                 parse_mode="markdown",
                 disable_web_page_preview=True
