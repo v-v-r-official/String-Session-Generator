@@ -18,7 +18,7 @@ from creds import Credentials
 API_TEXT = """Hi, {}.
 This is Pyrogram's String Session Generator Bot. I will generate String Session of your Telegram Account.
 
-By @Mr_Bot_Developer
+By @VkProjects
 
 Now send your `API_ID` same as `APP_ID` to Start Generating Session.
 
@@ -38,7 +38,7 @@ async def genStr(_, msg: Message):
     if msg.chat.id in Credentials.BANNED_USERS:
         await bot.send_message(
             chat_id=msg.chat.id,
-            text="You are Banned 🚫 to use me 🤭. Contact My [Support Group](https://t.me/Mr_Developer_Support)",
+            text="You are Banned 🚫 to use me 🤭. Contact My [Support Group](https://t.me/VKP_BOTS)",
             reply_to_message_id=msg.message_id
         )
         return
@@ -50,7 +50,7 @@ async def genStr(_, msg: Message):
             if user.status == "kicked":
                await bot.send_message(
                    chat_id=msg.chat.id,
-                   text="Sorry Sir, You are Banned!\nNow Your Can't Use Me. Contact my [Support Group](https://t.me/Mr_Developer_Support).",
+                   text="Sorry Sir, You are Banned!\nNow Your Can't Use Me. Contact my [Support Group](https://t.me/VKP_BOTZ).",
                    parse_mode="markdown",
                    disable_web_page_preview=True
                )
@@ -72,7 +72,7 @@ async def genStr(_, msg: Message):
         except Exception:
             await bot.send_message(
                 chat_id=msg.chat.id,
-                text="**Something went Wrong 🤪. Contact my [Support Group](https://t.me/Mr_Developer_Support).**",
+                text="**Something went Wrong 🤪. Contact my [Support Group](https://t.me/VKP_BOTS).**",
                 parse_mode="markdown",
                 disable_web_page_preview=True
             )
@@ -175,7 +175,7 @@ async def genStr(_, msg: Message):
         return
     try:
         session_string = await client.export_session_string()
-        await client.send_message("me", f"#PYROGRAM #STRING_SESSION ✅\n\n```{session_string}``` \n\nBy [@MD_StringSession_Bot](tg://openmessage?user_id=1637779993) \nA Bot By @Mr_Bot_Developer")
+        await client.send_message("me", f"#PYROGRAM #STRING_SESSION ✅\n\n```{session_string}``` \n\nBy [@SessionStringGenBot](tg://openmessage?user_id=1637779993) \nA Bot By @VkProjects")
         await client.disconnect()
         text = "String Session is Successfully ✅ Generated.\nClick on Below Button."
         reply_markup = InlineKeyboardMarkup(
@@ -210,11 +210,11 @@ Must Join Channel for Bot Updates !!
     reply_markup = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton('Support Group', url='https://t.me/Mr_Developer_Support'),
-                InlineKeyboardButton('Developer', url='https://t.me/MrBot_Developer')
+                InlineKeyboardButton('⚙️Group', url='https://t.me/VKP_BOTS'),
+                InlineKeyboardButton('Developer🛡', url='https://t.me/Vivek_Kerala')
             ],
             [
-                InlineKeyboardButton('Bots Updates Channel', url='https://t.me/Mr_Bot_Developer'),
+                InlineKeyboardButton('Updates Channel📣', url='https://t.me/VKPROJECTS'),
             ]
         ]
     )
