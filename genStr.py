@@ -31,7 +31,7 @@ PHONE_NUMBER_TEXT = (
 )
 
 
-UPDATES_CHANNEL = os.environ.get('UPDATES_CHANNEL', 'Mr_Bot_Developer')
+UPDATES_CHANNEL = os.environ.get('UPDATES_CHANNEL', 'VKPROJECTS')
 
 @bot.on_message(filters.private & filters.command("start"))
 async def genStr(_, msg: Message):
@@ -50,7 +50,7 @@ async def genStr(_, msg: Message):
             if user.status == "kicked":
                await bot.send_message(
                    chat_id=msg.chat.id,
-                   text="Sorry Sir, You are Banned!\nNow Your Can't Use Me. Contact my [Support Group](https://t.me/VKP_BOTZ).",
+                   text="Sorry Sir, You are Banned!\nNow Your Can't Use Me. Contact my [Support Group](https://t.me/VKP_BOTS).",
                    parse_mode="markdown",
                    disable_web_page_preview=True
                )
